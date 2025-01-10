@@ -1,5 +1,16 @@
-<div class="container h-100 pt-2">
-    <app-header/>
-    <!--User Selection-->
-    <!--Bet Interface-->
+<div class="container pt-2 d-flex flex-column fill-height">
+    <div class="equal-rows-container d-flex flex-column flex-grow-1 overflow-hidden">
+        <!-- Header -->
+        <div class="row header row-equal  text-white d-flex justify-content-center align-items-end">
+            <app-header/>
+        </div>
+        <!-- User Selection -->
+        <div class="row user-options row-equal text-white d-flex justify-content-center align-items-center">
+            <app-user-selection/>
+        </div>
+        <!-- Bet Options-->
+        <div class="row text-white d-flex justify-content-center align-items-end bet-options">
+            <app-bet-options/>
+        </div>
+    </div> 
 </div>

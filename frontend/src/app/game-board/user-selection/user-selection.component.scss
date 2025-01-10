@@ -1,0 +1,21 @@
+:host{
+    height:100%;
+    max-width: 400px;
+    min-width: 390px;
+    display: flex;
+    justify-content: center;
+}
+
+.glowing-text-red {
+    font-weight: bold;
+    color: white;
+    text-shadow: 0 0 3px #ffffff, 0 0 1px #d71e1e, 0 0 2px #ffffff,
+      0 0 10px #ffffff, 0 0 25px #d71e1e
+  }
+
+  .glowing-text-blue {
+    font-weight: bold;
+    color: white;
+    text-shadow: 0 0 3px #ffffff, 0 0 1px #401ed7, 0 0 2px #ffffff,
+      0 0 10px #ffffff, 0 0 25px #401ed7
+  }

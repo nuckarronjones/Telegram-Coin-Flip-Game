@@ -1,0 +1,33 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.fill-height {
+  flex-grow: 1;
+}
+
+.header {
+  min-height: 150px;
+  margin-bottom: 2rem;
+  max-height: 200px;
+}
+
+.equal-rows-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.user-options {
+  min-height: 200px;
+}
+
+.row-equal {
+  flex: 1;
+}
+
+.bet-options{
+  max-height: 200px;
+}
