@@ -1,0 +1,23 @@
+@keyframes widenSpacing {
+    0% {
+      opacity: 0; 
+      letter-spacing: normal;
+    }
+    100% {
+      opacity: 1; 
+      letter-spacing: 10px; 
+    }
+  }
+
+.wide-text {
+  font-size: 2rem; 
+  font-weight: bold;
+  animation: widenSpacing 3s ease-in-out forwards;
+}
+
+.glowing-text {
+  font-weight: bold;
+  color: white;
+  text-shadow: 0 0 3px #ffffff, 0 0 1px #ffffff, 0 0 2px #ffffff,
+    0 0 10px #ffffff, 0 0 25px #ffffff;
+}
