@@ -24,7 +24,9 @@
 .pill-img {
   width: 75px;
   height: 75px;
+  animation: rotateBackAndForth 4s infinite ease-in-out;
 }
+
 
 #option-red {
   position: absolute;
@@ -52,5 +54,17 @@
   }
   to {
     transform: rotate(360deg);
+  }
+}
+
+@keyframes rotateBackAndForth {
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(180deg); 
+  }
+  100% {
+    transform: rotate(0deg); 
   }
 }
