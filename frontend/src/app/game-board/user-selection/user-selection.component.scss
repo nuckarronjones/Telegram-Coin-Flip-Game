@@ -1,21 +1,56 @@
-:host{
-    height:100%;
-    max-width: 400px;
-    min-width: 390px;
-    display: flex;
-    justify-content: center;
+:host {
+  height: 100%;
+  max-width: 400px;
+  min-width: 390px;
+  max-height: 300px;
+  display: flex;
+  justify-content: center;
 }
 
 .glowing-text-red {
-    font-weight: bold;
-    color: white;
-    text-shadow: 0 0 3px #ffffff, 0 0 1px #d71e1e, 0 0 2px #ffffff,
-      0 0 10px #ffffff, 0 0 25px #d71e1e
-  }
+  font-weight: bold;
+  color: white;
+  text-shadow: 0 0 5px #ffffff, 0 0 3px #d71e1e, 0 0 15px #ffffff,
+    0 0 30px #d71e1e, 0 0 60px #d71e1e, 0 0 100px #d71e1e; 
+}
 
-  .glowing-text-blue {
-    font-weight: bold;
-    color: white;
-    text-shadow: 0 0 3px #ffffff, 0 0 1px #401ed7, 0 0 2px #ffffff,
-      0 0 10px #ffffff, 0 0 25px #401ed7
+.glowing-text-blue {
+  font-weight: bold;
+  color: white;
+  text-shadow: 0 0 5px #ffffff, 0 0 3px #401ed7, 0 0 15px #ffffff,
+    0 0 30px #401ed7, 0 0 60px #401ed7, 0 0 100px #401ed7; 
+}
+
+.pill-img {
+  width: 75px;
+  height: 75px;
+}
+
+#option-red {
+  position: absolute;
+  bottom: 0;
+  right: -5px;
+  margin-bottom: 30px;
+  width: 80px;
+}
+
+#option-blue {
+  position: absolute;
+  bottom: 0;
+  left: -5px;
+  margin-bottom: 30px;
+  width: 80px;
+}
+
+.spin-infinite {
+  animation: spin .2s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
   }
+  to {
+    transform: rotate(360deg);
+  }
+}

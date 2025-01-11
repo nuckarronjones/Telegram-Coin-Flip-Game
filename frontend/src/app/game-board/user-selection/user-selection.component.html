@@ -1,30 +1,38 @@
 <div class="row">
-  <div class="col p-0 position-relative">
-    <div style="position: absolute; bottom:0; right:-5px; margin-bottom:50px">
-        <img
-        class="d-block"
+  <div
+    class="col p-0 position-relative"
+    [@selectionAnimation]="state.userOptionSelection.redPill ? 'selected': 'normal'"
+    (click)="getUserSelection(userOption.redPill)"
+  >
+    <div id="option-red">
+      <img
+        class="d-block pill-img"
         src="images/red-pill.png"
         alt="Blue Pill"
         style="width: 75px; height: 75px"
       />
-      <div class="d-block mt-2 glowing-text-red ">RED PILL</div>
+      <div class="d-block mt-2 glowing-text-red">RED PILL</div>
     </div>
   </div>
   <div class="col d-flex justify-content-center align-items-start">
-    <img
+    <img [ngClass]="state.spinnerState ? 'spin-infinite' : ''"
       src="images/placeholder.png"
       alt="Placeholder image"
-      style="width: 140px; height: 140px; margin-bottom:130px;"
+      style="width: 140px; height: 140px; margin-bottom: 130px"
     />
   </div>
-  <div class="col p-0 position-relative">
-    <div style="position: absolute; bottom:0; left:-5px; margin-bottom:50px">
-        <img
-        class="d-block"
+  <div
+    class="col p-0 position-relative"
+    [@selectionAnimation]="state.userOptionSelection.bluePill ? 'selected': 'normal'"
+    (click)="getUserSelection(userOption.bluePill)"
+  >
+    <div id="option-blue">
+      <img
+        class="d-block pill-img"
         src="images/blue-pill.png"
         alt="Blue Pill"
-        style="width: 75px; height: 75px"
       />
-      <div class="d-block mt-2 glowing-text-blue ">BLUE PILL</div>
+      <div class="d-block mt-2 glowing-text-blue">BLUE PILL</div>
     </div>
+  </div>
 </div>
