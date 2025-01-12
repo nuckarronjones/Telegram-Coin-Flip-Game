@@ -21,7 +21,7 @@ export class UserSelectionComponent implements OnInit {
 
   public spinnerState: boolean = false;
   public userOption = userOption;
-  public state: GameStateModel | any = null;
+  public currentGameState: GameStateModel | any = null;
 
   private _gameStateSubscription: Subscription | null = null;
 
@@ -32,12 +32,15 @@ export class UserSelectionComponent implements OnInit {
 
   ngOnInit(): void {
     this._gameStateSubscription = this.gameState.gameState$.subscribe((state)=>{
-      this.state = state;
+      this.currentGameState = state;
     })
   }
+  
   public getUserSelection(selected: userOption):void{
-    this.gameState.updateUserSelection(selected);
-    this.gameState.updateBettingState(false);
+    if(this.currentGameState.userCanSelect){
+      this.gameState.updateUserSelection(selected);
+      this.gameState.disableBetting(false);
+    }
   }
 
 }

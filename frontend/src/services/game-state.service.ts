@@ -1,10 +1,12 @@
 import { Injectable } from '@angular/core';
-import { userOption, userSelectons } from '../app/shared/enums/userOption';
+import { userOption, userSelectons, userAmounts } from '../app/shared/enums/userOption';
 import { BehaviorSubject } from 'rxjs';
 
 export interface GameStateModel {
   spinnerState: boolean;
+  userCanSelect: boolean,
   userOptionSelection: userSelectons;
+  userAmounts: userAmounts;
   disableBetting: boolean;
 }
 
@@ -14,11 +16,16 @@ export interface GameStateModel {
 export class GameState {
   private _gameStateSubject = new BehaviorSubject<GameStateModel>({
     spinnerState: false,
+    disableBetting: true,
+    userCanSelect: true,
+    userAmounts:{
+      userBet: 100,
+      userBalance: 100
+    },
     userOptionSelection: {
       redPill: false,
       bluePill: false,
-    },
-    disableBetting: true,
+    }
   });
 
   gameState$ = this._gameStateSubject.asObservable();
@@ -44,7 +51,7 @@ export class GameState {
     });
   }
 
-  public updateBettingState(state: boolean): void {
+  public disableBetting(state: boolean): void {
     const currentState = this._gameStateSubject.value;
     this._gameStateSubject.next({
       ...currentState,
@@ -52,52 +59,32 @@ export class GameState {
     });
   }
 
-  public placeBet(): void {
-    this.setSpinnerState(true);
+  public allowUserSelection(state: boolean): void{
+    const currentState = this._gameStateSubject.value;
+    this._gameStateSubject.next({
+      ...currentState,
+      userCanSelect: state,
+    });
+  }
+
+  public placeBet(bet : number): void {
+    this._gameStateSubject.value.userAmounts.userBet = bet;
   }
 
   public resetGameState(): void {
     this._gameStateSubject.next({
       spinnerState: false,
+      userCanSelect: true,
       userOptionSelection: {
         redPill: false,
         bluePill: false,
+      },
+      userAmounts:{
+        userBet: 100,
+        userBalance: 100
       },
       disableBetting: true,
     });
   }
 
-  // private _spinnerStateSubject = new BehaviorSubject<boolean>(false);
-  // spinnerState$ = this._spinnerStateSubject.asObservable();
-
-  // private _userOptionSelectionSubject = new BehaviorSubject<userSelectons>({
-  //     redPill: false,
-  //     bluePill: false
-  // });
-  // selectionSubject$ = this._userOptionSelectionSubject.asObservable();
-
-  // private _bettingSubject = new BehaviorSubject<boolean>(true);
-  // disableBetting$ = this._spinnerStateSubject.asObservable();
-
-  // public userSelection(selected : userOption):void{
-  //     if (selected === userOption.redPill){
-  //         this._userOptionSelectionSubject.next({
-  //             redPill: true,
-  //             bluePill: false
-  //         });
-  //     }else{
-  //         this._userOptionSelectionSubject.next({
-  //             redPill: false,
-  //             bluePill: true
-  //         });
-  //     }
-  // }
-
-  // public placeBet():void{
-  //     this._spinnerStateSubject.next(true);
-  // }
-  //Bet amount
-  //User balance
-  //Random outcome
-  //Detect if user won or not
 }

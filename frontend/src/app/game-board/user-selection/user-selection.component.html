@@ -1,7 +1,7 @@
 <div class="row">
   <div
     class="col p-0 position-relative"
-    [@selectionAnimation]="state.userOptionSelection.redPill ? 'selected': 'normal'"
+    [@selectionAnimation]="currentGameState.userOptionSelection.redPill ? 'selected': 'normal'"
     (click)="getUserSelection(userOption.redPill)"
   >
     <div id="option-red">
@@ -15,7 +15,7 @@
     </div>
   </div>
   <div class="col d-flex justify-content-center align-items-start">
-    <img [ngClass]="state.spinnerState ? 'spin-infinite' : ''"
+    <img [ngClass]="currentGameState.spinnerState ? 'spin-infinite' : ''"
       src="images/placeholder.png"
       alt="Placeholder image"
       style="width: 140px; height: 140px; margin-bottom: 130px"
@@ -23,7 +23,7 @@
   </div>
   <div
     class="col p-0 position-relative"
-    [@selectionAnimation]="state.userOptionSelection.bluePill ? 'selected': 'normal'"
+    [@selectionAnimation]="currentGameState.userOptionSelection.bluePill ? 'selected': 'normal'"
     (click)="getUserSelection(userOption.bluePill)"
   >
     <div id="option-blue">
