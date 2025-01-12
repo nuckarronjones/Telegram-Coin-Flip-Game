@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { AnimationService } from '../../../services/global-animation.service';
 import { GameState, GameStateModel } from '../../../services/game-state.service';
-import { userOption, userSelectons } from '../../shared/enums/userOption';
+import { choices } from '../../shared/enums/userOption';
 import { NgClass } from '@angular/common';
  import { OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
@@ -20,7 +20,8 @@ import { Subscription } from 'rxjs';
 export class UserSelectionComponent implements OnInit {
 
   public spinnerState: boolean = false;
-  public userOption = userOption;
+  public choices = choices;
+  public spinnerImage: string = "placeholder";
   public currentGameState: GameStateModel | any = null;
 
   private _gameStateSubscription: Subscription | null = null;
@@ -33,14 +34,19 @@ export class UserSelectionComponent implements OnInit {
   ngOnInit(): void {
     this._gameStateSubscription = this.gameState.gameState$.subscribe((state)=>{
       this.currentGameState = state;
+      this.spinnerImage = this.currentGameState.result.imagePath;
     })
   }
 
-  public getUserSelection(selected: userOption):void{
+  public getUserSelection(selected: choices):void{
     if(this.currentGameState.userCanSelect){
       this.gameState.updateUserSelection(selected);
       this.gameState.enableBetting();
     }
+  }
+
+  public get getResultImagePath(): string{
+    return this.spinnerImage;
   }
 
 }

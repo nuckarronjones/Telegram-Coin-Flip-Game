@@ -1,8 +1,10 @@
 <div class="row">
   <div
     class="col p-0 position-relative"
-    [@selectionAnimation]="currentGameState.userOptionSelection.redPill ? 'selected': 'normal'"
-    (click)="getUserSelection(userOption.redPill)"
+    [@selectionAnimation]="
+      currentGameState.userOptionSelection.redPill ? 'selected' : 'normal'
+    "
+    (click)="getUserSelection(choices.redPill)"
   >
     <div id="option-red">
       <img
@@ -14,8 +16,10 @@
       <div class="d-block mt-2 glowing-text-red">RED PILL</div>
     </div>
   </div>
-  <div class="col d-flex justify-content-center align-items-start">
-    <img [ngClass]="currentGameState.spinnerState ? 'spin-infinite' : ''"
+  <div id="results" class="col d-flex justify-content-center align-items-start">
+    <img
+      [ngClass]="currentGameState.spinnerState ? 'spin-infinite' : ''"
+      src="{{ 'images/' + spinnerImage + '.png' }}"
       src="images/placeholder.png"
       alt="Placeholder image"
       style="width: 140px; height: 140px; margin-bottom: 130px"
@@ -23,8 +27,10 @@
   </div>
   <div
     class="col p-0 position-relative"
-    [@selectionAnimation]="currentGameState.userOptionSelection.bluePill ? 'selected': 'normal'"
-    (click)="getUserSelection(userOption.bluePill)"
+    [@selectionAnimation]="
+      currentGameState.userOptionSelection.bluePill ? 'selected' : 'normal'
+    "
+    (click)="getUserSelection(choices.bluePill)"
   >
     <div id="option-blue">
       <img
