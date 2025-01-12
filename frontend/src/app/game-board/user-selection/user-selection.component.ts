@@ -35,11 +35,11 @@ export class UserSelectionComponent implements OnInit {
       this.currentGameState = state;
     })
   }
-  
+
   public getUserSelection(selected: userOption):void{
     if(this.currentGameState.userCanSelect){
       this.gameState.updateUserSelection(selected);
-      this.gameState.disableBetting(false);
+      this.gameState.enableBetting();
     }
   }
 

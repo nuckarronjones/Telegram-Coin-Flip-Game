@@ -43,9 +43,9 @@ export class BetOptionsComponent implements OnInit {
       alert(`Improper bet, please try again.`);
     } else {
       if(userHasSelectedOption){
-        this.gameState.setSpinnerState(true);
-        this.gameState.disableBetting(true);
-        this.gameState.allowUserSelection(false);
+        this.gameState.enableSpinner();
+        this.gameState.disableBetting();
+        this.gameState.disableUserSelection();
       }
     }
   }

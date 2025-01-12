@@ -1,10 +1,14 @@
 import { Injectable } from '@angular/core';
-import { userOption, userSelectons, userAmounts } from '../app/shared/enums/userOption';
+import {
+  userOption,
+  userSelectons,
+  userAmounts,
+} from '../app/shared/enums/userOption';
 import { BehaviorSubject } from 'rxjs';
 
 export interface GameStateModel {
   spinnerState: boolean;
-  userCanSelect: boolean,
+  userCanSelect: boolean;
   userOptionSelection: userSelectons;
   userAmounts: userAmounts;
   disableBetting: boolean;
@@ -18,23 +22,47 @@ export class GameState {
     spinnerState: false,
     disableBetting: true,
     userCanSelect: true,
-    userAmounts:{
+    userAmounts: {
       userBet: 100,
-      userBalance: 100
+      userBalance: 100,
     },
     userOptionSelection: {
       redPill: false,
       bluePill: false,
-    }
+    },
   });
 
   gameState$ = this._gameStateSubject.asObservable();
 
-  public setSpinnerState(state: boolean): void {
+  public disableSpinner() {
     const currentState = this._gameStateSubject.value;
     this._gameStateSubject.next({
       ...currentState,
-      spinnerState: state,
+      spinnerState: false,
+    });
+  }
+
+  public enableSpinner() {
+    const currentState = this._gameStateSubject.value;
+    this._gameStateSubject.next({
+      ...currentState,
+      spinnerState: true,
+    });
+  }
+
+  public enableBetting() {
+    const currentState = this._gameStateSubject.value;
+    this._gameStateSubject.next({
+      ...currentState,
+      disableBetting: false,
+    });
+  }
+
+  public disableBetting() {
+    const currentState = this._gameStateSubject.value;
+    this._gameStateSubject.next({
+      ...currentState,
+      disableBetting: true,
     });
   }
 
@@ -51,23 +79,23 @@ export class GameState {
     });
   }
 
-  public disableBetting(state: boolean): void {
+  public allowUserSelection() {
     const currentState = this._gameStateSubject.value;
     this._gameStateSubject.next({
       ...currentState,
-      disableBetting: state,
+      userCanSelect: true,
     });
   }
 
-  public allowUserSelection(state: boolean): void{
+  public disableUserSelection() {
     const currentState = this._gameStateSubject.value;
     this._gameStateSubject.next({
       ...currentState,
-      userCanSelect: state,
+      userCanSelect: false,
     });
   }
 
-  public placeBet(bet : number): void {
+  public placeBet(bet: number): void {
     this._gameStateSubject.value.userAmounts.userBet = bet;
   }
 
@@ -79,12 +107,11 @@ export class GameState {
         redPill: false,
         bluePill: false,
       },
-      userAmounts:{
+      userAmounts: {
         userBet: 100,
-        userBalance: 100
+        userBalance: 100,
       },
       disableBetting: true,
     });
   }
-
 }
